@@ -1,0 +1,33 @@
+<!-- 
+	Barebones SNMP Probe
+-->
+
+<header>
+	type			= 	"custom-snmp"
+	package			= 	"com.intermapper"
+	probe_name		=	"barebones.snmp"
+	human_name		=	"Barebones SNMP"
+	version			= 	"0.3"
+	address_type	= 	"IP,AT"
+	port_number		=	"161"
+	flags			=   "NOLINKS"
+	display_name	=	"Miscellaneous/Test/Barebones SNMP"
+</header>
+
+<description>
+
+Barebones SNMP Probe
+
+</description>
+
+<snmp-device-variables>
+
+--  VariableName,   ObjectID (OID),     Format,     "Label for a chart"	
+    ifInOctets,     ifInOctets.13,      PER-SECOND, "Rx #13"
+
+</snmp-device-variables>
+
+<snmp-device-display>
+Barebones SNMP Probe
+     Received Traffic: ${ifInOctets} bytes/second 
+</snmp-device-display>

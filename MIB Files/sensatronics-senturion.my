@@ -1,0 +1,907 @@
+-- *****************************************************************
+
+-- SENSATRONICS-ITTM.TXT:  MIB corresponding to ITTM firmware v3.0
+
+-- 
+
+-- February 2008  Drew Thompson Van Zandt --
+
+-- Copyright (c) 2008 by Sensatronics LLC
+
+-- All rights reserved.-- 
+
+-- *****************************************************************
+
+SENSATRONICS-ITTM DEFINITIONS ::= BEGIN
+
+IMPORTS
+
+        MODULE-IDENTITY,        
+
+        OBJECT-TYPE,
+
+        NOTIFICATION-TYPE,
+
+        IpAddress,
+
+        TimeTicks        
+
+        FROM SNMPv2-SMI        
+
+        DisplayString        
+
+        FROM SNMPv2-TC        
+
+        envMonitors      
+
+        FROM SENSATRONICS-SMI;
+
+
+
+productSenturion MODULE-IDENTITY
+
+        LAST-UPDATED "200810030900Z"
+
+        ORGANIZATION "Sensatronics LLC"
+
+        CONTACT-INFO
+
+         "Sensatronics LLC
+
+          Postal: 20A Dunklee Road
+
+                  Bow, NH 03304
+
+                  USA
+
+          Tel: +1 603 224 0617
+
+          E-mail: support@sensatronics.com"
+
+        DESCRIPTION
+
+                "Sensatronics Senturion MIB information."
+
+        REVISION	"200810030900Z"
+
+        DESCRIPTION
+
+                "Initial release of this MIB module."        
+
+::= { envMonitors 5 }
+
+
+
+unitInfo OBJECT IDENTIFIER ::= { productSenturion 1 } -- Unit info for the Senturion Environmental Monitor being accessed.
+
+probeInfo OBJECT IDENTIFIER ::= { productSenturion 2 } -- Probe data for the Senturion Environmental Monitor being accessed.
+
+
+unitName OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (32))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "A user-definable unit name for the module being managed."        
+
+::= { unitInfo 1 }
+
+
+
+probeNames OBJECT IDENTIFIER ::= { probeInfo 1 } -- Unit info for the Senturion Environmental Monitor being accessed.
+
+probeValues OBJECT IDENTIFIER ::= { probeInfo 2 } -- Probe data for the Senturion Environmental Monitor being accessed.
+
+
+
+probe1Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 1 }
+
+probe2Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 2 }
+
+probe3Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 3 }
+
+probe4Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 4 }
+
+probe100Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 100 }
+
+probe200Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 200 }
+
+probe300Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 300 }
+
+probe400Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 400 }
+
+probe500Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 500 }
+
+probe600Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 600 }
+
+probe700Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 700 }
+
+probe800Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 800 }
+
+
+probe101Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 101 }
+
+probe201Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 201 }
+
+probe301Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 301 }
+
+probe401Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 401 }
+
+probe501Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 501 }
+
+probe601Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 601 }
+
+probe701Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 701 }
+
+probe801Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 801 }
+
+probe102Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 102 }
+
+probe202Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 202 }
+
+probe302Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 302 }
+
+probe402Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 402 }
+
+probe502Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 502 }
+
+probe602Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 602 }
+
+probe702Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 702 }
+
+probe802Name OBJECT-TYPE
+
+        SYNTAX     DisplayString (SIZE (24))
+
+        MAX-ACCESS read-write
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Name of probe - User configurable, 24 characters"        
+
+::= { probeNames 802 }
+
+
+
+probe1Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 1 }
+
+probe2Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 2 }
+
+probe3Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 3 }
+
+probe4Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 4 }
+
+probe99Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Number of probes in alarm state"        
+
+::= { probeValues 99 }
+
+probe100Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 100 }
+
+probe200Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 200 }
+
+probe300Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 300 }
+
+probe400Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 400 }
+
+probe500Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 500 }
+
+probe600Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 600 }
+
+probe700Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 700 }
+
+probe800Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 800 }
+
+
+probe101Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 101 }
+
+probe201Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 201 }
+
+probe301Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 301 }
+
+probe401Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 401 }
+
+probe501Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 501 }
+
+probe601Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 601 }
+
+probe701Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 701 }
+
+probe801Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 801 }
+
+
+probe102Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 102 }
+
+probe202Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 202 }
+
+probe302Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 302 }
+
+probe402Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 402 }
+
+probe502Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 502 }
+
+probe602Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 602 }
+
+probe702Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 702 }
+
+probe802Value OBJECT-TYPE
+
+        SYNTAX     INTEGER (-1000..33000)
+
+        MAX-ACCESS read-only
+
+        STATUS     current
+
+        DESCRIPTION
+
+                "Data from probe, integer format, tenths of units"        
+
+::= { probeValues 802 }
+
+
+END
+

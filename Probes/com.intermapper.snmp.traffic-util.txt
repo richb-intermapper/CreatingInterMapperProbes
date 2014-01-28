@@ -1,0 +1,71 @@
+<!-- 
+	High Traffic Variant of (com.intermapper.snmp.traffic-util.txt)
+-->
+
+<header>
+	type			= 	"custom-snmp"
+	package			= 	"com.intermapper"
+	probe_name		=	"snmp.traffic-util"
+	human_name		=	"SNMP - High Utilization"
+	version			= 	"0.3"
+	address_type	= 	"IP,AT"
+	port_number		=	"161"
+	flags			=   "NOLINKS"
+	display_name	=	"SNMP/SNMP - High Utilization"
+</header>
+
+<snmp-device-properties>
+	nomib2="true"
+</snmp-device-properties>
+
+<description>
+\gb\High Utilization Probe\p\
+
+This probe monitors the \i\utilization\p\ of ifInOctets and ifOutOctets traffic statistics of a particular interface on the device, and sets the device into alarm or warning when the traffic exceeds certain utilization thresholds. 
+
+It also gives a DOWN alarm if the interface's ifOperStatus is not equal to 1 (up).
+
+The \i\Port Number\p\ parameter is the ifIndex of the port to monitor. 
+
+The \i\Warn Threshold\p\ and \i\Alarm Threshold\p\ parameters are in percent of bandwidth utilization.
+</description>
+
+<parameters>
+	"Port Number" 	       = "1"
+	"Alarm Threshold Pct" = "90"
+	"Warn Threshold Pct"  = "75"
+</parameters>
+
+<snmp-device-variables>
+--  VariableName,	ObjectID (OID),				Format,		"Label for a chart"	
+	ifInOctets, 	ifInOctets.${Port Number}, 	PER-SECOND, "Received bytes/sec on interface ${Port Number}"
+	ifOutOctets,	ifOutOctets.${Port Number}, PER-SECOND, "Transmitted bytes/sec on interface ${Port Number}"
+	ifSpeed,		ifSpeed.${Port Number}, 	DEFAULT, 	"Interface speed (bps) on interface ${Port Number}"
+	ifAlias,		ifAlias.${Port Number}, 	DEFAULT, 	"Alias on interface ${Port Number}"	
+	ifOperStatus,	ifOperStatus.${Port Number},DEFAULT, 	"Operational status (numeric) interface ${Port Number}"	
+	ifOperStatusStr,ifOperStatus.${Port Number},STRING, 	"Operational status (string)  interface ${Port Number}"	
+
+--	Calculation for % util and how to handle empty/undefined ifAlias
+	InUtil,			(${ifInOctets}*8*100/${ifSpeed}), 		CALCULATION, "Receive Utilization"
+	OutUtil,		(${ifOutOctets}*8*100/${ifSpeed}), 		CALCULATION, "Transmit Utilization" 
+	AliasStr, 		(defined(${ifAlias}), ${ifAlias}, ""), 	CALCULATION, ""
+</snmp-device-variables>
+
+<snmp-device-thresholds>
+	<!-- down:		${ifOperStatus} != 1 "Link is ${ifOperStatusStr}" -->
+	alarm: 		${InUtil}  > ${Alarm Threshold Pct} "Alarm: high threshold (${Alarm Threshold Pct}%) exceeded"
+	alarm: 		${OutUtil} > ${Alarm Threshold Pct} "Alarm: high threshold (${Alarm Threshold Pct}%) exceeded"
+	warning: 	${InUtil}  > ${Warn Threshold Pct}  "Warn: high threshold (${Warn Threshold Pct}%) reached"
+	warning: 	${OutUtil} > ${Warn Threshold Pct}  "Warn: high threshold (${Warn Threshold Pct}%) reached"
+</snmp-device-thresholds>
+
+<snmp-device-display>
+
+\b5\High Utilization Probe\0p\ on interface ${Port Number} (${AliasStr}) \4\Bandwidth:\0\ ${scalable10:#.##:${ifspeed}}bps
+  \4\   Received Traffic:\0\ ${ifInOctets} bytes/second    
+  \4\Transmitted Traffic:\0\ ${ifOutOctets} bytes/second    
+              \4\Link is:\0\ ${ifOperStatusStr} \g3i\1=up; 2=down; 3=testing\p0m\
+  \4b\  Warn/Alarm set on: ${Warn Threshold Pct} / ${Alarm Threshold Pct} \P0\
+  \4\    Received Util %:\0\ ${InUtil} %
+  \4\ Transmitted Util %:\0\ ${OutUtil} %
+</snmp-device-display>
